@@ -11,13 +11,8 @@ namespace MindPlus_Colaboradores.Repository
         public async Task RealizarAvaliacao(AvaliacaoDTO avaliacao)
         {
             string sql = @"
-                    UPDATE AVALIACAO
-                    SET resposta1 = @resposta1,
-                        resposta2 = @resposta2,
-                        resposta3 = @resposta3,
-                        resposta4 = @resposta4,
-                        resposta5 = @resposta5
-                    WHERE ID = @COLABORADOR_ID
+                INSERT INTO AVALIACAO (resposta1, resposta2, resposta3, resposta4, resposta5, Colaborador_Id)
+                    VALUE (@resposta1, @resposta2, @resposta3, @resposta4, @resposta5, @Colaborador_Id)
             ";
             await Execute(sql, avaliacao);
         }

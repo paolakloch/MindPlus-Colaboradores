@@ -6,25 +6,29 @@ using MindPlus_Colaboradores.Repository;
 
 namespace MindPlus_Colaboradores.Controllers
 {
-    [ApiController]
-    [Route("avaliacao")]
-    public class AvaliacaoController : ControllerBase
-
-    {
-        private readonly IAvaliacaoRepository _avaliacaoRepository;
-
-        [HttpPost]
-        public async Task<IActionResult> RealizarAvaliacao(AvaliacaoDTO avaliacao)
+    
+        [ApiController]
+        [Route("avaliacao")]
+        public class AvaliacaoController : ControllerBase
         {
-            await _avaliacaoRepository.RealizarAvaliacao(avaliacao);
-            return Ok("Avalicação realizada com sucesso.");
-        }
+            private readonly IAvaliacaoRepository _avaliacaoRepository;
 
-        [HttpGet]
-        public async Task<IActionResult> VisualizarAvaliacao()
-        {
-            return Ok(await _avaliacaoRepository.VisualizarAvaliacoes());
+            public AvaliacaoController(IAvaliacaoRepository avaliacaoRepository)
+            {
+                _avaliacaoRepository = avaliacaoRepository;
+            }
+
+            [HttpPost]
+            public async Task<IActionResult> RealizarAvaliacao(AvaliacaoDTO avaliacao)
+            {
+                await _avaliacaoRepository.RealizarAvaliacao(avaliacao);
+                return Ok("Avaliação realizada com sucesso.");
+            }
+
+            [HttpGet]
+            public async Task<IActionResult> VisualizarAvaliacao()
+            {
+                return Ok(await _avaliacaoRepository.VisualizarAvaliacoes());
+            }
         }
-    }
-       
 }
