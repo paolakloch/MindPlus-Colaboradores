@@ -4,7 +4,7 @@ using MindPlus_Colaboradores.DTO;
 using MindPlus_Colaboradores.Entity;
 using MindPlus_Colaboradores.Infrastructure;
 
-namespace MindPlusColaboradorApi.Repository
+namespace MindPlus_Colaboradores.Repository
 {
     public class ColaboradorRepository : Connection, IColaboradorRepository
     {

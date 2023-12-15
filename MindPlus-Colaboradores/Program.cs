@@ -1,5 +1,5 @@
 using MindPlus_Colaboradores.Contracts.Repository;
-using MindPlusColaboradorApi.Repository;
+using MindPlus_Colaboradores.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddTransient<IAvaliacaoRepository, AvaliacaoRepository>();
 
 builder.Services.AddTransient<IColaboradorRepository, ColaboradorRepository>();
 
